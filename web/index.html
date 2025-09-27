@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <base href="/" />
+  <meta charset="UTF-8" />
+  <meta name="description" content="Puzzix — casual sliding puzzle game on Android & iOS" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Puzzix</title>
+  <link rel="icon" type="image/png" href="icons/Icon-192.png" />
+</head>
+<body>
+<script>
+  // GitHub Pages routing fix: redirect to index for deep links
+  (function () {
+    var segmentCount = 0; // keep 0 for root-based deploy
+    var l = window.location;
+    if (l.pathname.split('/').length - 1 > segmentCount) {
+      l.replace(l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') + '/');
+    }
+  })();
+</script>
+<script src="flutter.js" defer></script>
+<script>
+  window.addEventListener('load', function(ev) {
+    _flutter.loader.loadEntrypoint({}).then(function(engineInitializer) {
+      return engineInitializer.initializeEngine();
+    }).then(function(appRunner) {
+      return appRunner.runApp();
+    });
+  });
+</script>
+</body>
+</html>
