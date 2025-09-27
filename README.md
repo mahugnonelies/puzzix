@@ -1,4 +1,4 @@
-# Puzzix — Website (Flutter Web)
+# Puzzix – Website (Flutter Web)
 
 Landing page + Privacy + Legal for the Puzzix mobile app.
 
