@@ -11,7 +11,6 @@ class PrivacyPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: const Color(0xFFE9ECEF),
       appBar: AppBar(
-        backgroundColor: Colors.blueGrey[900],
         title: Text(context.tr('privacy.appbar')),
       ),
       body: SafeArea(
