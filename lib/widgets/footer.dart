@@ -13,19 +13,43 @@ class Footer extends StatelessWidget {
     return Container(
       color: Colors.blueGrey[900],
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      child: Center(
-        child: Wrap(
-          spacing: 20,
-          runSpacing: 8,
-          alignment: WrapAlignment.center,
-          children: [
-            Text(text, style: const TextStyle(color: Colors.white70)),
-            TextButton(onPressed: () => context.go('/privacy'), child: Text(context.tr('nav.privacy'), style: const TextStyle(color: Colors.white))),
-            TextButton(onPressed: () => context.go('/terms'), child: Text(context.tr('nav.terms'), style: const TextStyle(color: Colors.white))),
-            TextButton(onPressed: () => context.go('/legal'), child: Text(context.tr('nav.legal'), style: const TextStyle(color: Colors.white))),
-            TextButton(onPressed: () => context.go('/delete'), child: Text(context.tr('nav.delete'), style: const TextStyle(color: Colors.white))),
-          ],
-        ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Wrap(
+            spacing: 20,
+            runSpacing: 8,
+            alignment: WrapAlignment.center,
+            children: [
+              TextButton(
+                onPressed: () => context.go('/privacy'),
+                child: Text(context.tr('nav.privacy'),
+                    style: const TextStyle(color: Colors.white)),
+              ),
+              TextButton(
+                onPressed: () => context.go('/terms'),
+                child: Text(context.tr('nav.terms'),
+                    style: const TextStyle(color: Colors.white)),
+              ),
+              TextButton(
+                onPressed: () => context.go('/legal'),
+                child: Text(context.tr('nav.legal'),
+                    style: const TextStyle(color: Colors.white)),
+              ),
+              TextButton(
+                onPressed: () => context.go('/delete'),
+                child: Text(context.tr('nav.delete'),
+                    style: const TextStyle(color: Colors.white)),
+              ),
+            ],
+          ),
+          const SizedBox(height: 16), // espace avant le copyright
+          Text(
+            text,
+            style: const TextStyle(color: Colors.white70),
+            textAlign: TextAlign.center,
+          ),
+        ],
       ),
     );
   }
