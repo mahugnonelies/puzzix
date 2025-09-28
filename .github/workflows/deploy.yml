@@ -25,6 +25,8 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: stable
+          # optionnel mais recommandé pour la reproductibilité :
+          # flutter-version: '3.24.0'
 
       - name: Enable web
         run: flutter config --enable-web
@@ -32,17 +34,21 @@ jobs:
       - name: Pub get
         run: flutter pub get
 
+      # Build sans PWA pour éviter le service worker/caching agressif
       - name: Build web (release, no PWA)
         run: flutter build web --release --pwa-strategy=none
 
+      # Supprime les artefacts PWA s'ils existent (ne pas échouer si absents)
       - name: Remove old PWA files
         run: |
           rm -f build/web/flutter_service_worker.js || true
           rm -f build/web/manifest.json || true
 
+      # Fallback SPA pour GitHub Pages (URLs propres sans #)
       - name: Add SPA fallback (404.html)
         run: cp build/web/index.html build/web/404.html
 
+      # Domaine personnalisé
       - name: Add CNAME (custom domain)
         run: echo "puzzixapp.com" > build/web/CNAME
 

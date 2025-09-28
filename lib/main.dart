@@ -2,12 +2,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart'; // ⬅️ IMPORTANT
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter_web_plugins/flutter_web_plugins.dart'; // ⬅️ Ajouté
 
 import 'router.dart';
 import 'i18n/i18n.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+
+  // ⬇️ Enlève le # dans les URLs Flutter Web
+  usePathUrlStrategy();
+
   runApp(const PuzzixSite());
 }
 
