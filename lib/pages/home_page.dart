@@ -17,14 +17,6 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text(context.tr('app.title')),
         actions: [
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/privacy'),
-            child: Text(context.tr('nav.privacy')),
-          ),
-          TextButton(
-            onPressed: () => Navigator.pushNamed(context, '/legal'),
-            child: Text(context.tr('nav.legal')),
-          ),
           const LangToggle(),
           const SizedBox(width: 8),
         ],

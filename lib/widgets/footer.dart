@@ -21,7 +21,9 @@ class Footer extends StatelessWidget {
           children: [
             Text(text, style: const TextStyle(color: Colors.white70)),
             TextButton(onPressed: () => context.go('/privacy'), child: Text(context.tr('nav.privacy'), style: const TextStyle(color: Colors.white))),
+            TextButton(onPressed: () => context.go('/terms'), child: Text(context.tr('nav.terms'), style: const TextStyle(color: Colors.white))),
             TextButton(onPressed: () => context.go('/legal'), child: Text(context.tr('nav.legal'), style: const TextStyle(color: Colors.white))),
+            TextButton(onPressed: () => context.go('/delete'), child: Text(context.tr('nav.delete'), style: const TextStyle(color: Colors.white))),
           ],
         ),
       ),
