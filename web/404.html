@@ -1,0 +1,19 @@
+<!-- web/404.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <script>
+    (function () {
+      var redirectTo =
+        "/" +
+        window.location.pathname.replace(/^\//, "") +
+        window.location.search +
+        window.location.hash;
+      sessionStorage.setItem("flutter-web-route", redirectTo);
+      window.location.replace("/");
+    })();
+  </script>
+</head>
+<body>Redirecting…</body>
+</html>
