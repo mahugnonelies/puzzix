@@ -11,21 +11,31 @@
   <link rel="manifest" href="manifest.json">
   <meta name="theme-color" content="#2F7D32">
 </head>
+
 <body>
 <noscript>JavaScript is required to run this app.</noscript>
 
+<!-- 🔁 Restaure l'URL demandée (ex: /privacy, /terms) après redirection 404.html -->
+<script>
+  (function () {
+    var route = sessionStorage.getItem('flutter-web-route');
+    if (route) {
+      history.replaceState({}, '', route);
+      sessionStorage.removeItem('flutter-web-route');
+    }
+  })();
+</script>
+
 <!-- Flutter loader (officiel) -->
 <script>
-  // Laisser null : Flutter gère la version du service worker
-  var serviceWorkerVersion = null;
+  // Laisser null/valeur générée : Flutter gère la version du service worker
+  const serviceWorkerVersion = null;
 </script>
 <script src="flutter.js" defer></script>
 <script>
   window.addEventListener('load', function () {
     _flutter.loader.loadEntrypoint({
-      serviceWorker: {
-        serviceWorkerVersion: serviceWorkerVersion,
-      },
+      serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
       onEntrypointLoaded: function (engineInitializer) {
         engineInitializer.initializeEngine().then(function (appRunner) {
           appRunner.runApp();
