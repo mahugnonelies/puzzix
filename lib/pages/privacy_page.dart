@@ -91,6 +91,43 @@ class PrivacyPage extends StatelessWidget {
               _h(context, 'privacy.minors_title'),
               _p(context.tr('privacy.minors_body')),
 
+              _h(context, 'privacy.info_title'),
+              _p(context.tr('privacy.info_intro')),
+              _p(context.tr('privacy.info_thirdparty')),
+
+              // a. Google AdMob
+              _b(context.tr('privacy.admob_title')),
+              _p(context.tr('privacy.admob_body')),
+              _ul([
+                context.tr('privacy.admob_point_1'),
+                context.tr('privacy.admob_point_2'),
+                context.tr('privacy.admob_point_3'),
+              ]),
+              _p(context.tr('privacy.admob_note')),
+              _p(context.tr('privacy.admob_link_label')),
+
+              // b. Données d’utilisation & diagnostic
+              _b(context.tr('privacy.diag_title')),
+              _p(context.tr('privacy.diag_body')),
+
+              // c. Partage des informations
+              _b(context.tr('privacy.share2_title')),
+              _p(context.tr('privacy.share2_body')),
+
+              // d. Sécurité des données
+              _b(context.tr('privacy.security2_title')),
+              _p(context.tr('privacy.security2_body')),
+
+              // e. Publicités
+              _b(context.tr('privacy.ads_title')),
+              _p(context.tr('privacy.ads_body_1')),
+              _p(context.tr('privacy.ads_body_2')),
+              _p(context.tr('privacy.ads_prefs_link')),
+
+              // f. Droits de l’utilisateur
+              _b(context.tr('privacy.rights2_title')),
+              _p(context.tr('privacy.rights2_body')),
+
               _h(context, 'privacy.changes_title'),
               _p(context.tr('privacy.changes_body')),
 

@@ -1,0 +1,167 @@
+import 'package:flutter/material.dart';
+import '../i18n/i18n.dart';
+
+class LegalPage extends StatelessWidget {
+  const LegalPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFFE9ECEF),
+      appBar: AppBar(
+        title: Text(
+          context.tr('legal.appbar'),
+          style: const TextStyle(fontWeight: FontWeight.bold),
+        ),
+      ),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          padding: const EdgeInsets.all(16),
+          child: SelectionArea(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                _SectionTitle(context.tr('legal.heading')),
+
+                _SectionSubtitle(context.tr('legal.publisher_title')),
+                Text(context.tr('legal.publisher_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.director_title')),
+                Text(context.tr('legal.director_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.hosting_title')),
+                Text(context.tr('legal.hosting_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.ip_title')),
+                Text(context.tr('legal.ip_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.liability_title')),
+                Text(context.tr('legal.liability_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.data_title')),
+                Text(context.tr('legal.data_body')),
+                const SizedBox(height: 16),
+
+                _SectionSubtitle(context.tr('legal.law_title')),
+                Text(context.tr('legal.law_body')),
+                const SizedBox(height: 32),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _SectionTitle extends StatelessWidget {
+  final String text;
+  const _SectionTitle(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontSize: 20,
+        fontWeight: FontWeight.w800,
+        color: Color(0xFF2F4F4F),
+      ),
+    );
+  }
+}
+
+class _SectionSubtitle extends StatelessWidget {
+  final String text;
+  const _SectionSubtitle(this.text);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.only(top: 12, bottom: 4),
+      child: Text(
+        text,
+        style: const TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w700,
+          color: Color(0xFF1E5631),
+        ),
+      ),
+    );
+  }
+}
+
+
+// i18n.dart
+'legal.appbar': {
+    AppLang.fr: '📑 Mentions légales',
+    AppLang.en: '📑 Legal Notice',
+  },
+  'legal.heading': {
+    AppLang.fr: 'Mentions légales – Application Puzzix',
+    AppLang.en: 'Legal Notice – Puzzix App',
+  },
+
+  'legal.publisher_title': { AppLang.fr: 'Éditeur de l’application', AppLang.en: 'Publisher' },
+  'legal.publisher_body': {
+    AppLang.fr:
+    'MAHUGNON SERVICES LTD\nSociété enregistrée au Royaume-Uni\nNuméro d’enregistrement : 16010860\nSiège social : 20 Wenlock Road, London, N1 7GU, Royaume-Uni\nEmail de contact : support@puzzixapp.com\nTéléphone : +44 7492 804164',
+    AppLang.en:
+    'MAHUGNON SERVICES LTD\nCompany registered in the United Kingdom\nCompany Number: 16010860\nRegistered office: 20 Wenlock Road, London, N1 7GU, United Kingdom\nContact email: support@puzzixapp.com\nPhone: +44 7492 804164',
+  },
+
+  'legal.director_title': {
+    AppLang.fr: 'Directeur de la publication',
+    AppLang.en: 'Publication Director',
+  },
+  'legal.director_body': {
+    AppLang.fr:
+    'M. Mahugnon Elie SOGLO, en qualité de représentant légal de MAHUGNON SERVICES LTD.',
+    AppLang.en:
+    'Mr. Mahugnon Elie SOGLO, acting as the legal representative of MAHUGNON SERVICES LTD.',
+  },
+
+  'legal.hosting_title': { AppLang.fr: 'Hébergement', AppLang.en: 'Hosting' },
+  'legal.hosting_body': {
+    AppLang.fr:
+    'L’application Puzzix est hébergée et distribuée via :\n • Google Play Store (Google LLC – 1600 Amphitheatre Parkway, Mountain View, CA 94043, États-Unis)\n • App Store (Apple Inc. – One Apple Park Way, Cupertino, CA 95014, États-Unis)\n\nLes services backend et la base de données sont fournis par :\n • Supabase (Supabase, Inc. – 970 Toa Payoh North, #07-04, Singapore)\n • Google Firebase (Google LLC – 1600 Amphitheatre Parkway, Mountain View, CA 94043, États-Unis)',
+    AppLang.en:
+    'The Puzzix application is hosted and distributed via:\n • Google Play Store (Google LLC – 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA)\n • App Store (Apple Inc. – One Apple Park Way, Cupertino, CA 95014, USA)\n\nBackend services and database are provided by:\n • Supabase (Supabase, Inc. – 970 Toa Payoh North, #07-04, Singapore)\n • Google Firebase (Google LLC – 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA)',
+  },
+
+  'legal.ip_title': { AppLang.fr: 'Propriété intellectuelle', AppLang.en: 'Intellectual Property' },
+  'legal.ip_body': {
+    AppLang.fr:
+    'L’ensemble des éléments de l’application Puzzix (contenus, textes, images, graphismes, logos, bases de données, sons) est protégé par les lois en vigueur sur la propriété intellectuelle.\n\nToute reproduction, représentation, modification, publication, adaptation de tout ou partie des éléments de l’application, quel que soit le moyen ou le procédé utilisé, est interdite, sauf autorisation écrite préalable de MAHUGNON SERVICES LTD.',
+    AppLang.en:
+    'All elements of the Puzzix application (content, text, images, graphics, logos, databases, sounds) are protected by applicable intellectual property laws.\n\nAny reproduction, representation, modification, publication or adaptation of all or part of the application content, regardless of the means or process used, is prohibited without prior written authorisation from MAHUGNON SERVICES LTD.',
+  },
+
+  'legal.liability_title': { AppLang.fr: 'Responsabilité', AppLang.en: 'Liability' },
+  'legal.liability_body': {
+    AppLang.fr:
+    'MAHUGNON SERVICES LTD s’efforce de fournir une information fiable et mise à jour dans l’application Puzzix. Toutefois, des erreurs ou omissions peuvent survenir.\n\nL’utilisateur reconnaît utiliser l’application sous sa propre responsabilité. MAHUGNON SERVICES LTD ne saurait être tenue responsable d’éventuels dommages directs ou indirects résultant de l’utilisation de l’application.',
+    AppLang.en:
+    'MAHUGNON SERVICES LTD strives to provide reliable and up-to-date information within the Puzzix application. However, errors or omissions may occur.\n\nThe user acknowledges using the application at their own risk. MAHUGNON SERVICES LTD shall not be liable for any direct or indirect damages resulting from the use of the application.',
+  },
+
+  'legal.data_title': { AppLang.fr: 'Données personnelles', AppLang.en: 'Personal Data' },
+  'legal.data_body': {
+    AppLang.fr:
+    'L’application Puzzix collecte certaines données (identifiant anonyme, progression des niveaux, notifications push) uniquement pour le bon fonctionnement de ses services et à des fins statistiques.\n\nCes données sont traitées conformément au RGPD (UE 2016/679) et au UK GDPR. Pour toute demande relative à vos données : support@puzzixapp.com.',
+    AppLang.en:
+    'The Puzzix application collects certain data (anonymous identifier, level progression, push notifications) only for the proper functioning of its services and for statistical purposes.\n\nThis data is processed in accordance with the GDPR (EU 2016/679) and the UK GDPR. For any request regarding your data: support@puzzixapp.com.',
+  },
+
+  'legal.law_title': { AppLang.fr: 'Droit applicable', AppLang.en: 'Governing Law' },
+  'legal.law_body': {
+    AppLang.fr:
+    'Les présentes mentions légales sont soumises au droit anglais. Tout litige sera de la compétence exclusive des tribunaux du Royaume-Uni.',
+    AppLang.en:
+    'This legal notice is governed by English law. Any dispute shall fall under the exclusive jurisdiction of the courts of the United Kingdom.',
+  },

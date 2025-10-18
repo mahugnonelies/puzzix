@@ -353,7 +353,102 @@ const Map<String, Map<AppLang, String>> _kStrings = {
     'Puzzix is intended for a broad family audience. Data processed is technical and non-identifying. Parents/guardians can disable notifications on the device.',
   },
 
-  'privacy.changes_title': { AppLang.fr: '11. Modifications', AppLang.en: '11. Changes' },
+  'privacy.info_title': {
+    AppLang.en: '11. Information we collect',
+    AppLang.fr: '11. Informations collectées',
+  },
+  'privacy.info_intro': {
+    AppLang.en: 'We do not collect any personal information (such as name, email address, phone number, or precise location).',
+    AppLang.fr: 'Nous ne collectons aucune information personnelle (comme le nom, l’adresse e-mail, le numéro de téléphone ou la localisation précise).',
+  },
+  'privacy.info_thirdparty': {
+    AppLang.en: 'However, some data may be automatically collected by integrated third-party services in order to operate and improve the app:',
+    AppLang.fr: 'Cependant, certaines données peuvent être collectées automatiquement par des services tiers intégrés pour faire fonctionner et améliorer l’application :',
+  },
+
+  'privacy.admob_title': {
+    AppLang.en: 'a. Google AdMob (ads)',
+    AppLang.fr: 'a. Google AdMob (publicités)',
+  },
+  'privacy.admob_body': {
+    AppLang.en: 'We use Google AdMob to serve banner and interstitial ads. AdMob may collect and use anonymous advertising identifiers (e.g., Android Advertising ID) in order to:',
+    AppLang.fr: 'Nous utilisons Google AdMob pour diffuser des bannières et des annonces interstitielles. AdMob peut collecter et utiliser des identifiants publicitaires anonymes (ex. : ID publicitaire Android) afin de :',
+  },
+  'privacy.admob_point_1': {
+    AppLang.en: 'serve relevant ads;',
+    AppLang.fr: 'diffuser des annonces pertinentes ;',
+  },
+  'privacy.admob_point_2': {
+    AppLang.en: 'measure ad performance;',
+    AppLang.fr: 'mesurer la performance des publicités ;',
+  },
+  'privacy.admob_point_3': {
+    AppLang.en: 'limit the number of impressions of the same ad.',
+    AppLang.fr: 'limiter le nombre d’affichages d’une même publicité.',
+  },
+  'privacy.admob_note': {
+    AppLang.en: 'This data does not personally identify you.',
+    AppLang.fr: 'Ces données ne permettent pas de vous identifier personnellement.',
+  },
+  'privacy.admob_link_label': {
+    AppLang.en: 'Learn more in Google’s Privacy Policy: https://policies.google.com/privacy',
+    AppLang.fr: 'Pour en savoir plus, consultez la politique de confidentialité de Google : https://policies.google.com/privacy',
+  },
+
+  'privacy.diag_title': {
+    AppLang.en: 'b. Usage and diagnostics data',
+    AppLang.fr: 'b. Données d’utilisation et de diagnostic',
+  },
+  'privacy.diag_body': {
+    AppLang.en: 'We may automatically receive anonymous technical information (e.g., crashes, errors, performance) to improve stability and user experience.',
+    AppLang.fr: 'Nous pouvons recevoir automatiquement des informations techniques anonymes (par exemple : plantages, erreurs, performances de l’app) afin d’améliorer la stabilité et l’expérience utilisateur.',
+  },
+
+  'privacy.share2_title': {
+    AppLang.en: 'c. Information sharing',
+    AppLang.fr: 'c. Partage des informations',
+  },
+  'privacy.share2_body': {
+    AppLang.en: 'We do not share personal data. Any data that may be shared is anonymous and aggregated through the third-party services mentioned above (AdMob / Google Play Services).',
+    AppLang.fr: 'Nous ne partageons pas de données personnelles. Les seules données éventuellement partagées le sont de manière anonyme et agrégée via les services tiers mentionnés ci-dessus (AdMob / Google Play Services).',
+  },
+
+  'privacy.security2_title': {
+    AppLang.en: 'd. Data security',
+    AppLang.fr: 'd. Sécurité des données',
+  },
+  'privacy.security2_body': {
+    AppLang.en: 'All transmitted data is encrypted via HTTPS. No sensitive data (passwords, personal files, photos, precise location, etc.) is collected or stored.',
+    AppLang.fr: 'Toutes les données transmises sont chiffrées via HTTPS. Aucune donnée sensible (mot de passe, fichier personnel, photo, localisation précise, etc.) n’est collectée ni stockée.',
+  },
+
+  'privacy.ads_title': {
+    AppLang.en: 'e. Advertising',
+    AppLang.fr: 'e. Publicités',
+  },
+  'privacy.ads_body_1': {
+    AppLang.en: 'Ads shown in Puzzix are provided by Google AdMob, a Google Play-certified ad network.',
+    AppLang.fr: 'Les publicités affichées dans Puzzix proviennent de Google AdMob, un réseau publicitaire certifié par Google Play.',
+  },
+  'privacy.ads_body_2': {
+    AppLang.en: 'They comply with Google Play Families policies and do not contain inappropriate content.',
+    AppLang.fr: 'Elles respectent les politiques familiales de Google Play et ne contiennent pas de contenu inapproprié.',
+  },
+  'privacy.ads_prefs_link': {
+    AppLang.en: 'You can learn more and manage your ad preferences here: https://adssettings.google.com',
+    AppLang.fr: 'Vous pouvez en savoir plus ou personnaliser vos préférences publicitaires ici : https://adssettings.google.com',
+  },
+
+  'privacy.rights2_title': {
+    AppLang.en: 'f. User rights',
+    AppLang.fr: 'f. Droits de l’utilisateur',
+  },
+  'privacy.rights2_body': {
+    AppLang.en: 'Because Puzzix does not directly collect personal data, we do not provide deletion or access procedures. Any request related to AdMob can be addressed to Google via its privacy page.',
+    AppLang.fr: 'Comme aucune donnée personnelle n’est collectée directement par Puzzix, nous n’avons pas besoin de procédures de suppression ou d’accès aux données. Toute demande liée à AdMob peut être adressée à Google via sa page de confidentialité.',
+  },
+
+  'privacy.changes_title': { AppLang.fr: '12. Modifications', AppLang.en: '12. Changes' },
   'privacy.changes_body': {
     AppLang.fr:
     'Nous pouvons mettre à jour cette politique. La nouvelle version remplacera la précédente et sera publiée dans l’app.',
@@ -361,7 +456,7 @@ const Map<String, Map<AppLang, String>> _kStrings = {
     'We may update this policy. The new version will replace the previous one and be published in the app.',
   },
 
-  'privacy.contact_title': { AppLang.fr: '12. Contact', AppLang.en: '12. Contact' },
+  'privacy.contact_title': { AppLang.fr: '13. Contact', AppLang.en: '13. Contact' },
   'privacy.contact_block': {
     AppLang.fr:
     'MAHUGNON SERVICES LTD\nAdresse : 20 Wenlock Road, London, N1 7GU, Royaume-Uni\nEmail : support@puzzixapp.com',

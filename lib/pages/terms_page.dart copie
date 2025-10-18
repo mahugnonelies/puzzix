@@ -1,0 +1,317 @@
+import 'package:flutter/material.dart';
+import '../i18n/i18n.dart';
+
+class TermsPage extends StatelessWidget {
+  const TermsPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Scaffold(
+      backgroundColor: const Color(0xFFE9ECEF),
+      appBar: AppBar(
+        title: Text(context.tr('terms.appbar')),
+      ),
+      body: SafeArea(
+        child: SelectionArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
+            children: [
+              Text(
+                context.tr('terms.heading'),
+                style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                context.tr('terms.updated'),
+                style: theme.textTheme.bodySmall?.copyWith(color: theme.hintColor),
+              ),
+              const SizedBox(height: 16),
+
+              _h(context, 'terms.s1_title'),
+              _p(context.tr('terms.s1_body')),
+
+              _h(context, 'terms.s2_title'),
+              _p(context.tr('terms.s2_body')),
+
+              _h(context, 'terms.s3_title'),
+              _ul([
+                context.tr('terms.s3_1'),
+                context.tr('terms.s3_2'),
+                context.tr('terms.s3_3'),
+              ]),
+
+              _h(context, 'terms.s4_title'),
+              _ul([
+                context.tr('terms.s4_1'),
+                context.tr('terms.s4_2'),
+              ]),
+
+              _h(context, 'terms.s5_title'),
+              _ul([
+                context.tr('terms.s5_1'),
+                context.tr('terms.s5_2'),
+                context.tr('terms.s5_3'),
+              ]),
+
+              _h(context, 'terms.s6_title'),
+              _ul([
+                context.tr('terms.s6_1'),
+                context.tr('terms.s6_2'),
+              ]),
+
+              _h(context, 'terms.s7_title'),
+              _ul([
+                context.tr('terms.s7_1'),
+                context.tr('terms.s7_2'),
+                context.tr('terms.s7_3'),
+              ]),
+
+              _h(context, 'terms.s8_title'),
+              _p(context.tr('terms.s8_body')),
+
+              _h(context, 'terms.s9_title'),
+              _ul([
+                context.tr('terms.s9_1'),
+                context.tr('terms.s9_2'),
+                context.tr('terms.s9_3'),
+              ]),
+
+              _h(context, 'terms.s10_title'),
+              _p(context.tr('terms.s10_body')),
+
+              _h(context, 'terms.s11_title'),
+              _ul([
+                context.tr('terms.s11_1'),
+                context.tr('terms.s11_2'),
+              ]),
+
+              _h(context, 'terms.s12_title'),
+              _ul([
+                context.tr('terms.s12_1'),
+                context.tr('terms.s12_2'),
+              ]),
+
+              _h(context, 'terms.s13_title'),
+              _p(context.tr('terms.s13_body')),
+
+              _h(context, 'terms.s14_title'),
+              _p(context.tr('terms.s14_body')),
+
+              _h(context, 'terms.s15_title'),
+              _p(context.tr('terms.s15_body')),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // --- helpers UI ---
+  static Widget _h(BuildContext context, String key) => Padding(
+    padding: const EdgeInsets.only(top: 20, bottom: 8),
+    child: Text(
+      context.tr(key),
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+    ),
+  );
+
+  static Widget _p(String text) => Padding(
+    padding: const EdgeInsets.only(top: 2),
+    child: Text(text, style: const TextStyle(height: 1.4)),
+  );
+
+  static Widget _ul(List<String> items) => Padding(
+    padding: const EdgeInsets.only(top: 4),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items
+          .map(
+            (e) => Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('•  '),
+              Expanded(child: Text(e)),
+            ],
+          ),
+        ),
+      )
+          .toList(),
+    ),
+  );
+}
+
+
+
+// i18n.dart
+ 'terms.appbar': {
+    AppLang.fr: '📄 Conditions d’utilisation',
+    AppLang.en: '📄 Terms of Use',
+  },
+  'terms.heading': {
+    AppLang.fr: 'Puzzix – Conditions Générales d’Utilisation',
+    AppLang.en: 'Puzzix – Terms of Use',
+  },
+  'terms.updated': {
+    AppLang.fr: 'Dernière mise à jour : 26 septembre 2025',
+    AppLang.en: 'Last updated: September 26, 2025',
+  },
+
+  'terms.s1_title': { AppLang.fr: '1. Éditeur', AppLang.en: '1. Publisher' },
+  'terms.s1_body': {
+    AppLang.fr:
+    'Application éditée par MAHUGNON SERVICES LTD (Company Number : 16010860) – 20 Wenlock Road, London, N1 7GU, Royaume-Uni – Contact : support@puzzixapp.com.',
+    AppLang.en:
+    'App published by MAHUGNON SERVICES LTD (Company Number: 16010860) – 20 Wenlock Road, London, N1 7GU, United Kingdom – Contact: support@puzzixapp.com.',
+  },
+
+  'terms.s2_title': { AppLang.fr: '2. Objet', AppLang.en: '2. Purpose' },
+  'terms.s2_body': {
+    AppLang.fr:
+    'Les présentes CGU encadrent l’utilisation de l’application mobile Puzzix. En installant et utilisant l’App, vous acceptez ces conditions sans réserve.',
+    AppLang.en:
+    'These Terms govern the use of the Puzzix mobile application. By installing and using the App, you agree to these Terms without reservation.',
+  },
+
+  'terms.s3_title': { AppLang.fr: '3. Accès & disponibilité', AppLang.en: '3. Access & Availability' },
+  'terms.s3_1': {
+    AppLang.fr: 'App disponible gratuitement sur App Store et Google Play.',
+    AppLang.en: 'The App is available for free on the App Store and Google Play.',
+  },
+  'terms.s3_2': {
+    AppLang.fr: 'Connexion Internet requise pour certaines fonctionnalités.',
+    AppLang.en: 'Internet connection is required for certain features.',
+  },
+  'terms.s3_3': {
+    AppLang.fr: 'Nous pouvons modifier, suspendre ou interrompre l’App sans préavis.',
+    AppLang.en: 'We may modify, suspend, or discontinue the App without prior notice.',
+  },
+
+  'terms.s4_title': { AppLang.fr: '4. Compte & identité', AppLang.en: '4. Account & Identity' },
+  'terms.s4_1': {
+    AppLang.fr: 'Aucun compte nominatif requis : un identifiant anonyme est généré localement.',
+    AppLang.en: 'No named account is required: an anonymous identifier is generated locally.',
+  },
+  'terms.s4_2': {
+    AppLang.fr: 'Vous êtes responsable de l’usage de l’App sur votre appareil.',
+    AppLang.en: 'You are responsible for use of the App on your device.',
+  },
+
+  'terms.s5_title': { AppLang.fr: '5. Fonctionnalités', AppLang.en: '5. Features' },
+  'terms.s5_1': {
+    AppLang.fr:
+    'Jeu de puzzle avec progression (niveaux, grilles, meilleurs temps/mouvements).',
+    AppLang.en:
+    'Puzzle gameplay with progression (levels, grids, best time/moves).',
+  },
+  'terms.s5_2': {
+    AppLang.fr: 'Notifications push facultatives (rappels d’inactivité).',
+    AppLang.en: 'Optional push notifications (inactivity reminders).',
+  },
+  'terms.s5_3': {
+    AppLang.fr: 'Sauvegarde locale et synchronisation technique via nos services.',
+    AppLang.en: 'Local save and technical sync via our services.',
+  },
+
+  'terms.s6_title': { AppLang.fr: '6. Propriété intellectuelle', AppLang.en: '6. Intellectual Property' },
+  'terms.s6_1': {
+    AppLang.fr: 'L’App, son code, ses visuels et contenus sont protégés.',
+    AppLang.en: 'The App, its code, visuals and content are protected.',
+  },
+  'terms.s6_2': {
+    AppLang.fr: 'Toute reproduction, modification ou diffusion non autorisée est interdite.',
+    AppLang.en: 'Any unauthorised reproduction, modification or distribution is prohibited.',
+  },
+
+  'terms.s7_title': { AppLang.fr: '7. Comportements interdits', AppLang.en: '7. Prohibited Conduct' },
+  'terms.s7_1': {
+    AppLang.fr: 'Reverse engineering, contournement des mécanismes techniques.',
+    AppLang.en: 'Reverse engineering or circumventing technical safeguards.',
+  },
+  'terms.s7_2': {
+    AppLang.fr: 'Usage frauduleux, commercial ou publicitaire non autorisé.',
+    AppLang.en: 'Fraudulent, commercial, or advertising use without authorisation.',
+  },
+  'terms.s7_3': {
+    AppLang.fr:
+    'Toute action portant atteinte à la sécurité, disponibilité ou intégrité des services.',
+    AppLang.en:
+    'Any action harming the security, availability or integrity of the services.',
+  },
+
+  'terms.s8_title': { AppLang.fr: '8. Services tiers', AppLang.en: '8. Third-Party Services' },
+  'terms.s8_body': {
+    AppLang.fr:
+    'L’App s’appuie sur des services techniques : Supabase, Firebase Cloud Messaging, Google Apps Script. Leur fonctionnement peut impacter la disponibilité globale.',
+    AppLang.en:
+    'The App relies on technical services: Supabase, Firebase Cloud Messaging, Google Apps Script. Their operation may affect overall availability.',
+  },
+
+  'terms.s9_title': { AppLang.fr: '9. Responsabilité', AppLang.en: '9. Liability' },
+  'terms.s9_1': {
+    AppLang.fr: 'L’App est fournie « en l’état » sans garantie d’absence d’erreurs.',
+    AppLang.en: 'The App is provided “as is” without a warranty of error-free operation.',
+  },
+  'terms.s9_2': {
+    AppLang.fr: 'Nous ne saurions être responsables des dommages indirects ou pertes de données.',
+    AppLang.en: 'We are not liable for indirect damages or data loss.',
+  },
+  'terms.s9_3': {
+    AppLang.fr: 'Vous devez conserver vos appareils à jour et sécurisés.',
+    AppLang.en: 'You must keep your devices up to date and secured.',
+  },
+
+  'terms.s10_title': { AppLang.fr: '10. Données personnelles', AppLang.en: '10. Personal Data' },
+  'terms.s10_body': {
+    AppLang.fr:
+    'Le traitement des données est décrit dans la Politique de confidentialité disponible dans l’App. Merci de la consulter.',
+    AppLang.en:
+    'Data processing is described in the Privacy Policy available in the App. Please review it.',
+  },
+
+  'terms.s11_title': { AppLang.fr: '11. Notifications', AppLang.en: '11. Notifications' },
+  'terms.s11_1': {
+    AppLang.fr: 'Le consentement est requis sur l’appareil (Android 13+/iOS).',
+    AppLang.en: 'Consent is required at the device level (Android 13+/iOS).',
+  },
+  'terms.s11_2': {
+    AppLang.fr: 'Vous pouvez désactiver les notifications dans les réglages système.',
+    AppLang.en: 'You can disable notifications in the system settings.',
+  },
+
+  'terms.s12_title': { AppLang.fr: '12. Résiliation', AppLang.en: '12. Termination' },
+  'terms.s12_1': {
+    AppLang.fr: 'Vous pouvez désinstaller l’App à tout moment.',
+    AppLang.en: 'You may uninstall the App at any time.',
+  },
+  'terms.s12_2': {
+    AppLang.fr: 'Nous pouvons suspendre/mettre fin à l’accès en cas de violation des CGU.',
+    AppLang.en: 'We may suspend/terminate access in case of breach of these Terms.',
+  },
+
+  'terms.s13_title': { AppLang.fr: '13. Modifications', AppLang.en: '13. Changes' },
+  'terms.s13_body': {
+    AppLang.fr:
+    'Nous pouvons mettre à jour ces CGU. La version applicable est celle publiée dans l’App à la date d’utilisation.',
+    AppLang.en:
+    'We may update these Terms. The applicable version is the one published in the App at the time of use.',
+  },
+
+  'terms.s14_title': { AppLang.fr: '14. Droit applicable & juridiction', AppLang.en: '14. Governing Law & Jurisdiction' },
+  'terms.s14_body': {
+    AppLang.fr:
+    'Les CGU sont régies par le droit anglais. Tout litige relève des juridictions compétentes d’Angleterre et du Pays de Galles.',
+    AppLang.en:
+    'These Terms are governed by English law. Any dispute falls under the competent courts of England and Wales.',
+  },
+
+  'terms.s15_title': { AppLang.fr: '15. Contact', AppLang.en: '15. Contact' },
+  'terms.s15_body': {
+    AppLang.fr:
+    'MAHUGNON SERVICES LTD – 20 Wenlock Road, London, N1 7GU, Royaume-Uni\nEmail : support@puzzixapp.com',
+    AppLang.en:
+    'MAHUGNON SERVICES LTD – 20 Wenlock Road, London, N1 7GU, United Kingdom\nEmail: support@puzzixapp.com',
+  },

@@ -1,0 +1,510 @@
+import 'package:flutter/material.dart';
+import '../i18n/i18n.dart';
+
+class PrivacyPage extends StatelessWidget {
+  const PrivacyPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    return Scaffold(
+      backgroundColor: const Color(0xFFE9ECEF),
+      appBar: AppBar(
+        title: Text(context.tr('privacy.appbar')),
+      ),
+      body: SafeArea(
+        child: SelectionArea(
+          child: ListView(
+            padding: const EdgeInsets.fromLTRB(16, 12, 16, 32),
+            children: [
+              Text(
+                context.tr('privacy.heading'),
+                style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.w700),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                context.tr('privacy.updated'),
+                style: theme.textTheme.bodySmall?.copyWith(color: theme.hintColor),
+              ),
+              const SizedBox(height: 16),
+
+              _p(context.tr('privacy.intro')),
+
+              _h(context, 'privacy.controller_title'),
+              _p(context.tr('privacy.controller_body')),
+
+              _h(context, 'privacy.data_title'),
+              _b(context.tr('privacy.data_needed_title')),
+              _ul([
+                context.tr('privacy.data_needed_1'),
+                context.tr('privacy.data_needed_2'),
+                context.tr('privacy.data_needed_3'),
+                context.tr('privacy.data_needed_4'),
+                context.tr('privacy.data_needed_5'),
+              ]),
+              _b(context.tr('privacy.data_not_title')),
+              _ul([
+                context.tr('privacy.data_not_1'),
+                context.tr('privacy.data_not_2'),
+                context.tr('privacy.data_not_3'),
+              ]),
+
+              _h(context, 'privacy.purposes_title'),
+              _ul([
+                context.tr('privacy.purpose_1'),
+                context.tr('privacy.purpose_2'),
+                context.tr('privacy.purpose_3'),
+                context.tr('privacy.purpose_4'),
+                context.tr('privacy.purpose_5'),
+              ]),
+
+              _h(context, 'privacy.cookies_title'),
+              _p(context.tr('privacy.cookies_body')),
+
+              _h(context, 'privacy.shared_title'),
+              _p(context.tr('privacy.shared_intro')),
+              _ul([
+                context.tr('privacy.shared_1'),
+                context.tr('privacy.shared_2'),
+                context.tr('privacy.shared_3'),
+              ]),
+              _p(context.tr('privacy.shared_note')),
+
+              _h(context, 'privacy.retention_title'),
+              _ul([
+                context.tr('privacy.retention_1'),
+                context.tr('privacy.retention_2'),
+                context.tr('privacy.retention_3'),
+              ]),
+
+              _h(context, 'privacy.transfers_title'),
+              _p(context.tr('privacy.transfers_body')),
+
+              _h(context, 'privacy.rights_title'),
+              _p(context.tr('privacy.rights_body')),
+              _p(context.tr('privacy.contact_line')),
+
+              _h(context, 'privacy.security_title'),
+              _p(context.tr('privacy.security_body')),
+
+              _h(context, 'privacy.minors_title'),
+              _p(context.tr('privacy.minors_body')),
+
+              _h(context, 'privacy.info_title'),
+              _p(context.tr('privacy.info_intro')),
+              _p(context.tr('privacy.info_thirdparty')),
+
+              // a. Google AdMob
+              _b(context.tr('privacy.admob_title')),
+              _p(context.tr('privacy.admob_body')),
+              _ul([
+                context.tr('privacy.admob_point_1'),
+                context.tr('privacy.admob_point_2'),
+                context.tr('privacy.admob_point_3'),
+              ]),
+              _p(context.tr('privacy.admob_note')),
+              _p(context.tr('privacy.admob_link_label')),
+
+              // b. Données d’utilisation & diagnostic
+              _b(context.tr('privacy.diag_title')),
+              _p(context.tr('privacy.diag_body')),
+
+              // c. Partage des informations
+              _b(context.tr('privacy.share2_title')),
+              _p(context.tr('privacy.share2_body')),
+
+              // d. Sécurité des données
+              _b(context.tr('privacy.security2_title')),
+              _p(context.tr('privacy.security2_body')),
+
+              // e. Publicités
+              _b(context.tr('privacy.ads_title')),
+              _p(context.tr('privacy.ads_body_1')),
+              _p(context.tr('privacy.ads_body_2')),
+              _p(context.tr('privacy.ads_prefs_link')),
+
+              // f. Droits de l’utilisateur
+              _b(context.tr('privacy.rights2_title')),
+              _p(context.tr('privacy.rights2_body')),
+
+              _h(context, 'privacy.changes_title'),
+              _p(context.tr('privacy.changes_body')),
+
+              _h(context, 'privacy.contact_title'),
+              _p(context.tr('privacy.contact_block')),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  // --- helpers UI ---
+  static Widget _h(BuildContext context, String key) => Padding(
+    padding: const EdgeInsets.only(top: 20, bottom: 8),
+    child: Text(
+      context.tr(key),
+      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w800),
+    ),
+  );
+
+  static Widget _p(String text) => Padding(
+    padding: const EdgeInsets.only(top: 2),
+    child: Text(text, style: const TextStyle(height: 1.4)),
+  );
+
+  static Widget _b(String text) => Padding(
+    padding: const EdgeInsets.only(top: 8, bottom: 4),
+    child: Text(text, style: const TextStyle(fontWeight: FontWeight.w700)),
+  );
+
+  static Widget _ul(List<String> items) => Padding(
+    padding: const EdgeInsets.only(top: 4),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: items
+          .map(
+            (e) => Padding(
+          padding: const EdgeInsets.only(bottom: 6),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text('•  '),
+              Expanded(child: Text(e)),
+            ],
+          ),
+        ),
+      )
+          .toList(),
+    ),
+  );
+}
+
+
+
+// i18n.dart
+ 'privacy.title': {
+    AppLang.en: 'Privacy Policy',
+    AppLang.fr: 'Politique de confidentialité',
+  },
+  'privacy.body': {
+    AppLang.en:
+    'We collect anonymous identifiers, level progress and push tokens to operate the app, send reminders and improve features. We do not sell personal data.',
+    AppLang.fr:
+    'Nous collectons des identifiants anonymes, la progression des niveaux et les tokens push pour faire fonctionner l’app, envoyer des rappels et améliorer les fonctionnalités. Nous ne vendons pas de données personnelles.',
+  },
+  'privacy.contact': {
+    AppLang.en: 'Contact: support@[your-domain].com',
+    AppLang.fr: 'Contact : support@[votre-domaine].com',
+  },
+
+  // -------- Legal (résumé existant) --------
+  'legal.title': {
+    AppLang.en: 'Legal Notice',
+    AppLang.fr: 'Mentions légales',
+  },
+  'legal.body': {
+    AppLang.en:
+    'Publisher: MAHUGNON SERVICES LTD (UK). Hosting: Google Play / App Store. Backend: Supabase, Firebase. All content protected. Governing law: England & Wales.',
+    AppLang.fr:
+    'Éditeur : MAHUGNON SERVICES LTD (UK). Hébergement : Google Play / App Store. Backend : Supabase, Firebase. Contenus protégés. Droit applicable : Angleterre & Pays de Galles.',
+  },
+
+  // ===================== Privacy – version détaillée =====================
+  'privacy.appbar': {
+    AppLang.fr: '🔒 Politique de confidentialité',
+    AppLang.en: '🔒 Privacy Policy',
+  },
+  'privacy.heading': {
+    AppLang.fr: 'Puzzix – Politique de confidentialité',
+    AppLang.en: 'Puzzix – Privacy Policy',
+  },
+  'privacy.updated': {
+    AppLang.fr: 'Dernière mise à jour : 26 septembre 2025',
+    AppLang.en: 'Last updated: September 26, 2025',
+  },
+  'privacy.intro': {
+    AppLang.fr:
+    'La présente politique explique comment MAHUGNON SERVICES LTD (« nous », « notre ») traite vos données lors de l’utilisation de l’application mobile Puzzix.',
+    AppLang.en:
+    'This policy explains how MAHUGNON SERVICES LTD (“we”, “our”) processes your data when you use the Puzzix mobile application.',
+  },
+
+  'privacy.controller_title': {
+    AppLang.fr: '1. Responsable du traitement',
+    AppLang.en: '1. Data Controller',
+  },
+  'privacy.controller_body': {
+    AppLang.fr:
+    'MAHUGNON SERVICES LTD\nCompany Number : 16010860\nAdresse : 20 Wenlock Road, London, N1 7GU, Royaume-Uni\nEmail : support@puzzixapp.com',
+    AppLang.en:
+    'MAHUGNON SERVICES LTD\nCompany Number: 16010860\nAddress: 20 Wenlock Road, London, N1 7GU, United Kingdom\nEmail: support@puzzixapp.com',
+  },
+
+  'privacy.data_title': { AppLang.fr: '2. Données que nous traitons', AppLang.en: '2. Data We Process' },
+  'privacy.data_needed_title': {
+    AppLang.fr: 'Données techniques et d’usage (nécessaires au fonctionnement) :',
+    AppLang.en: 'Technical and usage data (required for operation):',
+  },
+  'privacy.data_needed_1': {
+    AppLang.fr: 'Identifiant anonyme local (généré sur l’appareil).',
+    AppLang.en: 'Anonymous local identifier (generated on the device).',
+  },
+  'privacy.data_needed_2': {
+    AppLang.fr: 'Progression dans les niveaux (niveaux terminés, temps, mouvements).',
+    AppLang.en: 'Level progression (completed levels, time, moves).',
+  },
+  'privacy.data_needed_3': {
+    AppLang.fr: 'Horodatages d’activité (ouverture/jeu) pour relances d’inactivité.',
+    AppLang.en: 'Activity timestamps (open/play) to support inactivity reminders.',
+  },
+  'privacy.data_needed_4': {
+    AppLang.fr: 'Token de notifications push (Android/iOS) si vous l’autorisez.',
+    AppLang.en: 'Push notification token (Android/iOS) if you allow it.',
+  },
+  'privacy.data_needed_5': {
+    AppLang.fr: 'Données techniques d’appareil/OS (journalisation limitée).',
+    AppLang.en: 'Device/OS technical data (limited logging).',
+  },
+  'privacy.data_not_title': {
+    AppLang.fr: 'Ce que nous NE collectons pas :',
+    AppLang.en: 'What we do NOT collect:',
+  },
+  'privacy.data_not_1': {
+    AppLang.fr: 'Aucune donnée nominative (nom, email, téléphone) via l’app.',
+    AppLang.en: 'No personally identifying data (name, email, phone) via the app.',
+  },
+  'privacy.data_not_2': {
+    AppLang.fr: 'Aucune donnée de localisation fine.',
+    AppLang.en: 'No precise location data.',
+  },
+  'privacy.data_not_3': {
+    AppLang.fr: 'Aucun suivi publicitaire tiers dans l’app.',
+    AppLang.en: 'No third-party advertising tracking within the app.',
+  },
+
+  'privacy.purposes_title': {
+    AppLang.fr: '3. Finalités & bases légales',
+    AppLang.en: '3. Purposes & Legal Bases',
+  },
+  'privacy.purpose_1': {
+    AppLang.fr: 'Fournir les fonctionnalités du jeu (exécution du contrat d’utilisation).',
+    AppLang.en: 'Provide game features (performance of the user agreement).',
+  },
+  'privacy.purpose_2': {
+    AppLang.fr: 'Sauvegarder votre progression (intérêt légitime / exécution).',
+    AppLang.en: 'Save your progression (legitimate interest / performance).',
+  },
+  'privacy.purpose_3': {
+    AppLang.fr: 'Envoyer des notifications de rappel (consentement).',
+    AppLang.en: 'Send reminder notifications (consent).',
+  },
+  'privacy.purpose_4': {
+    AppLang.fr: 'Mesurer l’usage de façon agrégée pour améliorer l’app (intérêt légitime).',
+    AppLang.en: 'Measure usage in aggregate to improve the app (legitimate interest).',
+  },
+  'privacy.purpose_5': {
+    AppLang.fr: 'Sécurité, prévention de la fraude et journalisation minimale (intérêt légitime).',
+    AppLang.en: 'Security, fraud prevention and minimal logging (legitimate interest).',
+  },
+
+  'privacy.cookies_title': { AppLang.fr: '4. Cookies & traçeurs', AppLang.en: '4. Cookies & Trackers' },
+  'privacy.cookies_body': {
+    AppLang.fr:
+    'Puzzix n’utilise pas de cookies dans l’application mobile. Des services tiers (ex. Firebase Cloud Messaging) utilisent leurs propres identifiants techniques pour délivrer les notifications.',
+    AppLang.en:
+    'Puzzix does not use cookies within the mobile app. Third-party services (e.g., Firebase Cloud Messaging) use their own technical identifiers to deliver notifications.',
+  },
+
+  'privacy.shared_title': { AppLang.fr: '5. Partage avec des tiers', AppLang.en: '5. Sharing with Third Parties' },
+  'privacy.shared_intro': {
+    AppLang.fr:
+    'Nous utilisons des sous-traitants techniques pour héberger et acheminer les données strictement nécessaires :',
+    AppLang.en: 'We use technical processors to host and route strictly necessary data:',
+  },
+  'privacy.shared_1': {
+    AppLang.fr: 'Supabase (hébergement des données de progression et fonctions Edge).',
+    AppLang.en: 'Supabase (hosting progression data and Edge functions).',
+  },
+  'privacy.shared_2': {
+    AppLang.fr: 'Firebase Cloud Messaging (envoi des notifications).',
+    AppLang.en: 'Firebase Cloud Messaging (sending notifications).',
+  },
+  'privacy.shared_3': {
+    AppLang.fr: 'Google Apps Script (réception d’événements techniques et envoi d’emails internes).',
+    AppLang.en: 'Google Apps Script (receiving technical events and sending internal emails).',
+  },
+  'privacy.shared_note': {
+    AppLang.fr:
+    'Ces prestataires agissent conformément à nos instructions et aux lois applicables. Aucune vente de données n’est effectuée.',
+    AppLang.en: 'These providers act under our instructions and applicable laws. We do not sell data.',
+  },
+
+  'privacy.retention_title': { AppLang.fr: '6. Durées de conservation', AppLang.en: '6. Retention Periods' },
+  'privacy.retention_1': {
+    AppLang.fr:
+    'Progression & activité : conservées tant que l’app est utilisée (nettoyage des inactifs au-delà d’une période raisonnable).',
+    AppLang.en:
+    'Progression & activity: kept while the app is used (inactive accounts are pruned after a reasonable period).',
+  },
+  'privacy.retention_2': {
+    AppLang.fr: 'Tokens de notification : supprimés/rotations automatiques et à la désinstallation.',
+    AppLang.en: 'Notification tokens: automatically rotated/removed and deleted on uninstallation.',
+  },
+  'privacy.retention_3': {
+    AppLang.fr: 'Journaux techniques : rétention courte, uniquement pour diagnostic.',
+    AppLang.en: 'Technical logs: short retention, for diagnostics only.',
+  },
+
+  'privacy.transfers_title': {
+    AppLang.fr: '7. Transferts hors Royaume-Uni / UE',
+    AppLang.en: '7. Transfers outside the UK / EU',
+  },
+  'privacy.transfers_body': {
+    AppLang.fr:
+    'Certains prestataires peuvent opérer hors du Royaume-Uni/UE. Nous mettons en place des garanties appropriées (clauses contractuelles types, mesures techniques et organisationnelles).',
+    AppLang.en:
+    'Some providers may operate outside the UK/EU. We implement appropriate safeguards (standard contractual clauses, technical and organizational measures).',
+  },
+
+  'privacy.rights_title': { AppLang.fr: '8. Vos droits', AppLang.en: '8. Your Rights' },
+  'privacy.rights_body': {
+    AppLang.fr:
+    'Conformément au UK GDPR/PECR, vous disposez de droits d’accès, de rectification, d’effacement, de limitation, d’opposition, et de portabilité lorsque applicable. Vous pouvez retirer votre consentement aux notifications depuis les réglages de l’appareil.',
+    AppLang.en:
+    'Under the UK GDPR/PECR, you have rights of access, rectification, erasure, restriction, objection, and portability where applicable. You can withdraw consent to notifications in your device settings.',
+  },
+  'privacy.contact_line': {
+    AppLang.fr:
+    'Pour exercer vos droits : support@puzzixapp.com. Autorité de contrôle (UK) : Information Commissioner’s Office (ICO).',
+    AppLang.en:
+    'To exercise your rights: support@puzzixapp.com. Supervisory authority (UK): Information Commissioner’s Office (ICO).',
+  },
+
+  'privacy.security_title': { AppLang.fr: '9. Sécurité', AppLang.en: '9. Security' },
+  'privacy.security_body': {
+    AppLang.fr:
+    'Nous appliquons des mesures raisonnables (chiffrement en transit, contrôle d’accès, clés côté serveur). Aucun système n’est totalement invulnérable.',
+    AppLang.en:
+    'We apply reasonable measures (encryption in transit, access control, server-side keys). No system is completely invulnerable.',
+  },
+
+  'privacy.minors_title': { AppLang.fr: '10. Mineurs', AppLang.en: '10. Minors' },
+  'privacy.minors_body': {
+    AppLang.fr:
+    'Puzzix est destiné à un large public familial. Les données traitées sont techniques et non nominatives. Les parents/tuteurs peuvent désactiver les notifications sur l’appareil.',
+    AppLang.en:
+    'Puzzix is intended for a broad family audience. Data processed is technical and non-identifying. Parents/guardians can disable notifications on the device.',
+  },
+
+  'privacy.info_title': {
+    AppLang.en: '11. Information we collect',
+    AppLang.fr: '11. Informations collectées',
+  },
+  'privacy.info_intro': {
+    AppLang.en: 'We do not collect any personal information (such as name, email address, phone number, or precise location).',
+    AppLang.fr: 'Nous ne collectons aucune information personnelle (comme le nom, l’adresse e-mail, le numéro de téléphone ou la localisation précise).',
+  },
+  'privacy.info_thirdparty': {
+    AppLang.en: 'However, some data may be automatically collected by integrated third-party services in order to operate and improve the app:',
+    AppLang.fr: 'Cependant, certaines données peuvent être collectées automatiquement par des services tiers intégrés pour faire fonctionner et améliorer l’application :',
+  },
+
+  'privacy.admob_title': {
+    AppLang.en: 'a. Google AdMob (ads)',
+    AppLang.fr: 'a. Google AdMob (publicités)',
+  },
+  'privacy.admob_body': {
+    AppLang.en: 'We use Google AdMob to serve banner and interstitial ads. AdMob may collect and use anonymous advertising identifiers (e.g., Android Advertising ID) in order to:',
+    AppLang.fr: 'Nous utilisons Google AdMob pour diffuser des bannières et des annonces interstitielles. AdMob peut collecter et utiliser des identifiants publicitaires anonymes (ex. : ID publicitaire Android) afin de :',
+  },
+  'privacy.admob_point_1': {
+    AppLang.en: 'serve relevant ads;',
+    AppLang.fr: 'diffuser des annonces pertinentes ;',
+  },
+  'privacy.admob_point_2': {
+    AppLang.en: 'measure ad performance;',
+    AppLang.fr: 'mesurer la performance des publicités ;',
+  },
+  'privacy.admob_point_3': {
+    AppLang.en: 'limit the number of impressions of the same ad.',
+    AppLang.fr: 'limiter le nombre d’affichages d’une même publicité.',
+  },
+  'privacy.admob_note': {
+    AppLang.en: 'This data does not personally identify you.',
+    AppLang.fr: 'Ces données ne permettent pas de vous identifier personnellement.',
+  },
+  'privacy.admob_link_label': {
+    AppLang.en: 'Learn more in Google’s Privacy Policy: https://policies.google.com/privacy',
+    AppLang.fr: 'Pour en savoir plus, consultez la politique de confidentialité de Google : https://policies.google.com/privacy',
+  },
+
+  'privacy.diag_title': {
+    AppLang.en: 'b. Usage and diagnostics data',
+    AppLang.fr: 'b. Données d’utilisation et de diagnostic',
+  },
+  'privacy.diag_body': {
+    AppLang.en: 'We may automatically receive anonymous technical information (e.g., crashes, errors, performance) to improve stability and user experience.',
+    AppLang.fr: 'Nous pouvons recevoir automatiquement des informations techniques anonymes (par exemple : plantages, erreurs, performances de l’app) afin d’améliorer la stabilité et l’expérience utilisateur.',
+  },
+
+  'privacy.share2_title': {
+    AppLang.en: 'c. Information sharing',
+    AppLang.fr: 'c. Partage des informations',
+  },
+  'privacy.share2_body': {
+    AppLang.en: 'We do not share personal data. Any data that may be shared is anonymous and aggregated through the third-party services mentioned above (AdMob / Google Play Services).',
+    AppLang.fr: 'Nous ne partageons pas de données personnelles. Les seules données éventuellement partagées le sont de manière anonyme et agrégée via les services tiers mentionnés ci-dessus (AdMob / Google Play Services).',
+  },
+
+  'privacy.security2_title': {
+    AppLang.en: 'd. Data security',
+    AppLang.fr: 'd. Sécurité des données',
+  },
+  'privacy.security2_body': {
+    AppLang.en: 'All transmitted data is encrypted via HTTPS. No sensitive data (passwords, personal files, photos, precise location, etc.) is collected or stored.',
+    AppLang.fr: 'Toutes les données transmises sont chiffrées via HTTPS. Aucune donnée sensible (mot de passe, fichier personnel, photo, localisation précise, etc.) n’est collectée ni stockée.',
+  },
+
+  'privacy.ads_title': {
+    AppLang.en: 'e. Advertising',
+    AppLang.fr: 'e. Publicités',
+  },
+  'privacy.ads_body_1': {
+    AppLang.en: 'Ads shown in Puzzix are provided by Google AdMob, a Google Play-certified ad network.',
+    AppLang.fr: 'Les publicités affichées dans Puzzix proviennent de Google AdMob, un réseau publicitaire certifié par Google Play.',
+  },
+  'privacy.ads_body_2': {
+    AppLang.en: 'They comply with Google Play Families policies and do not contain inappropriate content.',
+    AppLang.fr: 'Elles respectent les politiques familiales de Google Play et ne contiennent pas de contenu inapproprié.',
+  },
+  'privacy.ads_prefs_link': {
+    AppLang.en: 'You can learn more and manage your ad preferences here: https://adssettings.google.com',
+    AppLang.fr: 'Vous pouvez en savoir plus ou personnaliser vos préférences publicitaires ici : https://adssettings.google.com',
+  },
+
+  'privacy.rights2_title': {
+    AppLang.en: 'f. User rights',
+    AppLang.fr: 'f. Droits de l’utilisateur',
+  },
+  'privacy.rights2_body': {
+    AppLang.en: 'Because Puzzix does not directly collect personal data, we do not provide deletion or access procedures. Any request related to AdMob can be addressed to Google via its privacy page.',
+    AppLang.fr: 'Comme aucune donnée personnelle n’est collectée directement par Puzzix, nous n’avons pas besoin de procédures de suppression ou d’accès aux données. Toute demande liée à AdMob peut être adressée à Google via sa page de confidentialité.',
+  },
+
+  'privacy.changes_title': { AppLang.fr: '12. Modifications', AppLang.en: '12. Changes' },
+  'privacy.changes_body': {
+    AppLang.fr:
+    'Nous pouvons mettre à jour cette politique. La nouvelle version remplacera la précédente et sera publiée dans l’app.',
+    AppLang.en:
+    'We may update this policy. The new version will replace the previous one and be published in the app.',
+  },
+
+  'privacy.contact_title': { AppLang.fr: '13. Contact', AppLang.en: '13. Contact' },
+  'privacy.contact_block': {
+    AppLang.fr:
+    'MAHUGNON SERVICES LTD\nAdresse : 20 Wenlock Road, London, N1 7GU, Royaume-Uni\nEmail : support@puzzixapp.com',
+    AppLang.en:
+    'MAHUGNON SERVICES LTD\nAddress: 20 Wenlock Road, London, N1 7GU, United Kingdom\nEmail: support@puzzixapp.com',
+  },

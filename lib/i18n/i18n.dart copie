@@ -1,0 +1,150 @@
+import 'dart:ui' as ui;
+import 'dart:html' as html; // Web only
+import 'package:flutter/material.dart';
+
+enum AppLang { en, fr }
+
+/// Stocke la langue courante + expose t(key)
+class I18n extends InheritedWidget {
+  final ValueNotifier<AppLang> lang;
+  final Map<String, Map<AppLang, String>> _strings;
+
+  I18n({
+    super.key,
+    required Widget child,
+    required AppLang initial,
+  })  : lang = ValueNotifier<AppLang>(initial),
+        _strings = _kStrings,
+        super(child: child);
+
+  static I18n of(BuildContext context) {
+    final i = context.dependOnInheritedWidgetOfExactType<I18n>();
+    assert(i != null, 'I18n not found. Wrap your app with I18n.');
+    return i!;
+  }
+
+  static AppLang autoDetect() {
+    // 1) préférence utilisateur
+    final stored = html.window.localStorage['lang'];
+    if (stored == 'fr') return AppLang.fr;
+    if (stored == 'en') return AppLang.en;
+
+    // 2) navigateur
+    final nav = html.window.navigator.language.toLowerCase();
+    if (nav.startsWith('fr')) return AppLang.fr;
+
+    // 3) locale device (fallback)
+    final device = ui.PlatformDispatcher.instance.locale.languageCode.toLowerCase();
+    if (device.startsWith('fr')) return AppLang.fr;
+
+    return AppLang.en;
+  }
+
+  String t(String key) {
+    final m = _strings[key];
+    if (m == null) return key;
+    return m[lang.value] ?? m[AppLang.en] ?? key;
+  }
+
+  void setLang(AppLang l) {
+    lang.value = l;
+    html.window.localStorage['lang'] = l == AppLang.fr ? 'fr' : 'en';
+  }
+
+  @override
+  bool updateShouldNotify(I18n oldWidget) => lang != oldWidget.lang;
+}
+
+extension I18nExt on BuildContext {
+  String tr(String key) => I18n.of(this).t(key);
+  ValueNotifier<AppLang> get langNotifier => I18n.of(this).lang;
+  void setLang(AppLang l) => I18n.of(this).setLang(l);
+}
+
+// ====== Chaînes ======
+const Map<String, Map<AppLang, String>> _kStrings = {
+  // AppBar
+  'app.title': {
+    AppLang.en: 'Puzzix',
+    AppLang.fr: 'Puzzix',
+  },
+  'nav.privacy': {
+    AppLang.en: 'Privacy',
+    AppLang.fr: 'Confidentialité',
+  },
+  'nav.terms': {
+    AppLang.en: 'Terms',
+    AppLang.fr: 'Conditions',
+  },
+  'nav.legal': {
+    AppLang.en: 'Legal',
+    AppLang.fr: 'Mentions légales',
+  },
+  'nav.delete': {
+    AppLang.en: 'Data Deletion Policy',
+    AppLang.fr: 'Suppression des données',
+  },
+
+  // Hero
+  'hero.title': {
+    AppLang.en: 'Puzzix',
+    AppLang.fr: 'Puzzix',
+  },
+  'hero.subtitle': {
+    AppLang.en: 'A soothing sliding-puzzle with 1000 levels and daily reminders.',
+    AppLang.fr: 'Un taquin relaxant avec 1000 niveaux et des rappels quotidiens.',
+  },
+
+  // CTA
+  'cta.headline': {
+    AppLang.en: 'Play. Relax. Repeat.',
+    AppLang.fr: 'Joue. Respire. Recommence.',
+  },
+  'cta.text': {
+    AppLang.en:
+    'A clean, satisfying sliding puzzle with 1000 handcrafted levels, daily streaks and notifications.',
+    AppLang.fr:
+    'Un taquin fluide et satisfaisant avec 1000 niveaux faits main, séries quotidiennes et rappels.',
+  },
+  'cta.play': {
+    AppLang.en: 'Get it on Google Play',
+    AppLang.fr: 'Disponible sur Google Play',
+  },
+  'cta.appstore': {
+    AppLang.en: 'Download on the App Store',
+    AppLang.fr: 'Télécharger sur l’App Store',
+  },
+
+  // Features
+  'feat.1.title': { AppLang.en: '1000 Levels', AppLang.fr: '1000 niveaux' },
+  'feat.1.text': {
+    AppLang.en: 'Gradually increasing grids, handcrafted pacing.',
+    AppLang.fr: 'Grilles progressives et rythme soigné.',
+  },
+  'feat.2.title': { AppLang.en: 'Gentle Reminders', AppLang.fr: 'Rappels discrets' },
+  'feat.2.text': {
+    AppLang.en: 'Keep your daily streak with optional notifications.',
+    AppLang.fr: 'Conserve ta série avec des notifications facultatives.',
+  },
+  'feat.3.title': { AppLang.en: 'Snappy & Smooth', AppLang.fr: 'Rapide et fluide' },
+  'feat.3.text': {
+    AppLang.en: 'Fast animations and a crisp feel.',
+    AppLang.fr: 'Animations rapides et expérience nette.',
+  },
+
+  // Footer
+  'footer.copyright': {
+    AppLang.en: '© {y} MAHUGNON SERVICES LTD',
+    AppLang.fr: '© {y} MAHUGNON SERVICES LTD',
+  },
+
+  // -------- Privacy (résumé existant) --------
+
+  // ===================== Terms =====================
+
+
+  // ===================== Legal (détaillé) =====================
+
+  // ===== Data Deletion Policy =====
+
+};
